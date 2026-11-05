@@ -8,6 +8,7 @@ export default function TaskForm({ onAdd }) {
     e.preventDefault();
 
     const clean = title.trim();
+
     if (!clean) return;
 
     onAdd(clean);
@@ -17,7 +18,6 @@ export default function TaskForm({ onAdd }) {
   return (
     <form className="task-form" onSubmit={handleSubmit}>
       <input
-        id="new-task"
         type="text"
         value={title}
         placeholder="What needs to be done?"

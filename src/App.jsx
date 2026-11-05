@@ -1,10 +1,8 @@
 
 import { useState } from "react";
-
 import TaskForm from "./components/TaskForm.jsx";
 import TaskList from "./components/TaskList.jsx";
 import FilterBar from "./components/FilterBar.jsx";
-
 import "./App.css";
 
 export default function App() {
@@ -45,46 +43,60 @@ export default function App() {
   return (
     <main className="app-container">
       <section className="todo-card">
+
         <header className="app-header">
+      
           <h1>My Tasks<span>.</span></h1>
           <p>Plan your day. Stay focused. Get things done.</p>
         </header>
 
         <TaskForm onAdd={addTask} />
 
-        <div className="task-summary">
-          <div>
-            <strong>{remaining}</strong>
-            <span>Tasks left</span>
+        <section className="task-summary">
+          <div className="summary-card">
+            <div className="summary-icon">▤</div>
+            <div>
+              <strong>{remaining}</strong>
+              <span>Tasks left</span>
+            </div>
           </div>
 
-          <div>
-            <strong>{completed}</strong>
-            <span>Completed</span>
+          <div className="summary-card">
+            <div className="summary-icon">✓</div>
+            <div>
+              <strong>{completed}</strong>
+              <span>Completed</span>
+            </div>
           </div>
 
-          <div>
-            <strong>{tasks.length}</strong>
-            <span>Total tasks</span>
+          <div className="summary-card">
+            <div className="summary-icon">▦</div>
+            <div>
+              <strong>{tasks.length}</strong>
+              <span>Total tasks</span>
+            </div>
           </div>
-        </div>
+        </section>
 
-        <div className="list-heading">
-          <h2>Your task list</h2>
-          <span>{filteredTasks.length} tasks</span>
-        </div>
+        <section className="task-section">
+          <div className="list-heading">
+            <h2>Your task list</h2>
+            <span>{filteredTasks.length} tasks</span>
+          </div>
 
-        <FilterBar filter={filter} onChange={setFilter} />
+          <FilterBar filter={filter} onChange={setFilter} />
 
-        <TaskList
-          tasks={filteredTasks}
-          onToggle={toggleTask}
-          onDelete={deleteTask}
-        />
+          <TaskList
+            tasks={filteredTasks}
+            onToggle={toggleTask}
+            onDelete={deleteTask}
+          />
+        </section>
 
         <footer className="app-footer">
           Small steps make big progress.
         </footer>
+
       </section>
     </main>
   );

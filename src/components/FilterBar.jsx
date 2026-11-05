@@ -3,7 +3,7 @@ const FILTERS = ["all", "active", "done"];
 
 export default function FilterBar({ filter, onChange }) {
   return (
-    <div role="group" aria-label="Filter tasks" className="filters">
+    <div className="filters" role="group" aria-label="Filter tasks">
       {FILTERS.map((f) => (
         <button
           key={f}
@@ -12,7 +12,9 @@ export default function FilterBar({ filter, onChange }) {
           aria-pressed={filter === f}
           onClick={() => onChange(f)}
         >
-          {f === "done" ? "Completed" : f[0].toUpperCase() + f.slice(1)}
+          {f === "done"
+            ? "Completed"
+            : f[0].toUpperCase() + f.slice(1)}
         </button>
       ))}
     </div>
