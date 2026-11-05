@@ -1,0 +1,138 @@
+
+   GLOBAL COLORS
+
+:root {
+  --text: #6b6b91;
+  --text-h: #17145c;
+
+  --bg: #e8e8ff;
+  --border: #e5e4f5;
+
+  --accent: #5549ed;
+  --accent-hover: #4035cc;
+  --accent-bg: rgba(85, 73, 237, 0.1);
+
+  --shadow:
+    0 10px 30px rgba(55, 55, 130, 0.12);
+
+  --sans: "Inter", "Segoe UI", Roboto, sans-serif;
+  --heading: "Inter", "Segoe UI", Roboto, sans-serif;
+
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--text);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+   GLOBAL RESET
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  min-width: 320px;
+  scroll-behavior: smooth;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  font-family: var(--sans);
+
+  background:
+    radial-gradient(
+      circle at 0% 5%,
+      #e5caff 0,
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 100% 20%,
+      #8baaff 0,
+      transparent 35%
+    ),
+    radial-gradient(
+      circle at 80% 100%,
+      #aaa0ff 0,
+      transparent 35%
+    ),
+    linear-gradient(
+      135deg,
+      #d9d5ff,
+      #b8c8ff,
+      #e8dcff
+    );
+
+  background-attachment: fixed;
+}
+
+
+   ROOT CONTAINER
+
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+}
+
+
+   HEADINGS
+
+
+h1,
+h2,
+h3 {
+  font-family: var(--heading);
+  color: var(--text-h);
+}
+
+h1 {
+  font-size: 38px;
+  font-weight: 750;
+  letter-spacing: -1.5px;
+}
+
+h2 {
+  font-size: 19px;
+  font-weight: 700;
+}
+
+p {
+  margin: 0;
+}
+
+   BUTTONS AND INPUT
+
+button,
+input {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+input {
+  outline: none;
+}
+
+
+   /* RESPONSIVE DESIGN */
+@media (max-width: 600px) {
+  h1 {
+    font-size: 30px;
+  }
+
+  body {
+    background-attachment: scroll;
+  }
+}
