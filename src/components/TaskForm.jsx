@@ -1,33 +1,71 @@
+import { useEffect, useState } from "react";
 
-import { useState } from "react";
-
-export default function TaskForm({ onAdd }) {
+function TaskForm({ onSaveTask, editingTask, onCancelEdit }) {
   const [title, setTitle] = useState("");
+  const [priority, setPriority] = useState("Medium");
 
-  function handleSubmit(e) {
-    e.preventDefault();
+  useEffect(() => {
+    if (editingTask) {
+      setTitle(editingTask.title);
+      setPriority(editingTask.priority);
+    } else {
+      setTitle("");
+      setPriority("Medium");
+    }
+  }, [editingTask]);
 
-    const clean = title.trim();
+  function handleSubmit(event) {
+    event.preventDefault();
 
-    if (!clean) return;
+    if (!title.trim()) {
+      return;
+    }
 
-    onAdd(clean);
+    onSaveTask({
+      title: title.trim(),
+      priority,
+    });
+
     setTitle("");
+    setPriority("Medium");
   }
 
   return (
     <form className="task-form" onSubmit={handleSubmit}>
       <input
         type="text"
+        placeholder="What do you need to do?"
         value={title}
-        placeholder="What needs to be done?"
-        onChange={(e) => setTitle(e.target.value)}
-        aria-label="New task"
+        onChange={(event) => setTitle(event.target.value)}
+        maxLength={100}
+        aria-label="Task name"
       />
 
-      <button type="submit" disabled={!title.trim()}>
-        + Add Task
+      <select
+        value={priority}
+        onChange={(event) => setPriority(event.target.value)}
+        aria-label="Task priority"
+      >
+        <option value="Low">Low priority</option>
+        <option value="Medium">Medium priority</option>
+        <option value="High">High priority</option>
+      </select>
+
+      <button type="submit" className="add-btn">
+        {editingTask ? "Save Changes" : "+ Add Task"}
       </button>
+
+      {editingTask && (
+        <button
+          type="button"
+          className="cancel-btn"
+          onClick={onCancelEdit}
+        >
+          Cancel
+        </button>
+      )}
     </form>
   );
 }
+
+export default TaskForm;
